@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-//http://en.wikipedia.org/wiki/Binary_tree
+#include "fifo.h"
+
+//ref http://en.wikipedia.org/wiki/Binary_tree 
+//http://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/trees.html
 
 class t2node_t{
 public://todo: add binary_tree as friend class
@@ -172,7 +175,7 @@ private:
 		current_ctr++;
 		while(levelq.len() > 0 )
 		{
-			if( (outptr = levelq.out_q()) != NULL)
+			if( (outptr = (t2node_t*)levelq.out_q()) != NULL)
 			{
 				printf("%c:",outptr->value);
 
