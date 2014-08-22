@@ -27,6 +27,8 @@ public://todo: add binary_tree as friend class
 	t2node_t()
 	{
 		value = (char) ((rand()%95)+32);
+		//practically, a value should be gotten outside. 
+		//it implies that a t2node_t(type* const value) is better a t2node_t()!
 		printf("%c:", value);//
 	}
 	~t2node_t()
@@ -46,13 +48,6 @@ public:
 	unsigned int len()
 	{
 		return t2node_t::get_length();
-	}
-	t2node_t* iter(unsigned int sn, t2node_t* ptr)
-	{
-		//ASSERT(ptr= NULL);
-		for(; sn > 1 ; sn--)
-			ptr=ptr->left;
-		return ptr;
 	}
 	void construct()
 	{
@@ -96,6 +91,20 @@ public:
 			ctr_pre_order(parent->right);
 		}
 	}
+	void construct_search_tree()
+	{
+		//it is better to get values from a (sorted) linked list, not a randomized generated value.		
+		root = new t2node_t;//add a root first
+		t2node_t* succ = new t2node_t;
+		
+		//then randomly add leaves
+		ctr_search_tree(succ);				
+	}
+	void ctr_search_tree(t2node_t* succ)
+	{
+		//todo, 
+	}
+
 	int insert_after(unsigned int sn, t2node_t* const to_add)
 	{
 
