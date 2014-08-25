@@ -18,3 +18,21 @@ And, of course, the usual assortment of drivers, ARM architecture ports, and oth
 
 
 Of this list, nearly all of the bullets were implemented as device drivers with little or no changes necessary to core kernel code. The only significant subsystem-spanning change is wakelocks.
+
+http://blog.chinaunix.net/uid-7201775-id-25895.html
+http://my.oschina.net/u/1169027/blog/191538
+http://www.cs.unc.edu/~tracker/media/pdf/SIGGRAPH2001_CoursePack_08.pdf
+http://www.iecc.com/linker/linker09.html
+https://community.oracle.com/thread/1705443?start=0&tstart=0
+
+http://www.xml.com/ldd/chapter/book/ch13.html
+
+http://en.wikipedia.org/wiki/Doubly_linked_list#Circular_doubly-linked_lists
+
+char * const a; const pointer. like a ref.
+
+http://medialab.freaknet.org/martin/src/sqrt/
+http://en.wikipedia.org/wiki/Methods_of_computing_square_roots
+
+
+http://www.glassdoor.com/Interview/Qualcomm-Embedded-Software-Engineer-Interview-Questions-EI_IE640.0,8_KO9,35_IP2.htm
