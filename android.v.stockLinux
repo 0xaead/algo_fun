@@ -1,0 +1,20 @@
+What Are The Major Changes That Android Made To The Linux Kernel?
+Robert Love, Software Engineer at Google
+
+The interesting thing about Android’s design is how little we modified the kernel. Most embedded systems on which I have worked have made drastic changes to the kernel, only to leave user-space alone — for example, a heavily-modified “realtime” kernel but X11 for a GUI.
+
+Android is the opposite: only minimal changes to the kernel, but a user-space wholly unlike that of any other Unix system. In fact, Android’s user-space is so different from stock Linux, you can easily say that Android is not in any way a Linux system, except for the kernel.
+
+Here is a concise list of the changes we made to the Linux kernel:
+
+ashmem (Android Shared Memory), a file-based shared memory system.
+Binder, an inter-process communication (IPC) and remote procedure call (RPC) system.
+logger, a high-speed in-kernel logging mechanism optimized for writes.
+Paranoid Networking, a mechanism to restrict network I/O to certain processes.
+pmem (Physical Memory), a driver for mapping large chunks of physical memory into user-space.
+Viking Killer, a replacement OOM killer that implements Android’s “kill least recently used process” logic under low memory conditions.
+wakelocks, Android’s unique power management solution, in which the default state of the device is sleep and explicit action is required (via a wakelock) to prevent that.
+And, of course, the usual assortment of drivers, ARM architecture ports, and other associated low-level code necessary to support Android on any given device.
+
+
+Of this list, nearly all of the bullets were implemented as device drivers with little or no changes necessary to core kernel code. The only significant subsystem-spanning change is wakelocks.
