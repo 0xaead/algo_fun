@@ -6,26 +6,58 @@
 
 #define HI 50.0
 #define LO -50.0
-#define SAMPLE_LENGTH 1024
+#define SAMPLE_LENGTH 16
 using namespace std;
 void main()
 {    
     complex <float>    *pSignal = new complex <float> [SAMPLE_LENGTH];
     for(int i = 0; i < SAMPLE_LENGTH; i++)
     {
-         float r3 = LO + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(HI-LO)));
-         pSignal[i] = r3;
+         float real = LO + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(HI-LO)));
+		 float virt = LO + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(HI-LO)));
+         pSignal[i] = complex <float> (real,virt);
          cout<<pSignal[i] <<",";
     }
     //Apply FFT
     CFFT::Forward(pSignal, SAMPLE_LENGTH);
     cout<<endl;
-     for(int i = 0; i < SAMPLE_LENGTH; i++)
+    for(int i = 0; i < SAMPLE_LENGTH; i++)
     {
          cout<<pSignal[i] <<",";
     }
-    //Free memory
+    //i-FFT
+	CFFT::Inverse(pSignal, SAMPLE_LENGTH);
+    cout<<endl;
+    for(int i = 0; i < SAMPLE_LENGTH; i++)
+    {
+         cout<<pSignal[i] <<",";
+    }
+	//Free memory
     delete[] pSignal;
+}
+void CFFT::Scale(complex<float> *const Data, const unsigned int N)
+{
+   const double Factor = 1. / double(N);
+   //   Scale all data entries
+   for (unsigned int Position = 0; Position < N; ++Position)
+      Data[Position] *= Factor;
+}
+
+bool CFFT::Inverse(complex<float> *const Data, const unsigned int N,
+   const bool Scale /* = true */)
+{
+   //   Check input parameters
+   if (!Data || N < 1 || N & (N - 1))
+      return false;
+   //   Rearrange
+   Rearrange(Data, N);
+   //   Call FFT implementation
+   Perform(Data, N, true);
+   //   Scale if necessary
+   if (Scale)
+      CFFT::Scale(Data, N);
+   //   Succeeded
+   return true;
 }
 
 bool CFFT::Forward(complex <float>  *const data, const unsigned int length)
