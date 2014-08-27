@@ -17,7 +17,7 @@ public:
     //  N      - length of both input data and result
     //  Scale - if to scale result
     static bool Inverse(complex <float>  *const Data, const unsigned int N,
-        const bool Scale = true);
+        const bool scale = true);
 
 protected:
     //Rearrange function and its inplace version
@@ -26,6 +26,8 @@ protected:
     //FFT implementation
     static void Perform(complex <float>  *const Data, const unsigned int N,
         const bool Inverse = false);
+
+	static void Scale(complex<float> *const Data, const unsigned int N);
 };
 
 #endif
