@@ -14,7 +14,6 @@ void main()
 {  
     const char *pInputStr="xxxyyyeeeellllllllddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddkkkkkkkkkkkkzzzzzzzzzzzzdddddddddgggggggzza";
 
-
 	char (*d1_ptr) [SIZE_D1] = (char (*)[SIZE_D1]) pInputStr; //then d1_ptr++ means a SIZE_D1(16) byte offset!
 	for(int i=0; i<SIZE_D2 ;i++)
 	{
@@ -44,7 +43,8 @@ void main()
 	foo(d1_ptr);
 	printf("\n ");
 }
-void foo(char _array[][SIZE_D1]) //so decent, isn't it?? -->void foo(char array[][SIZE_D1] )
+
+void foo(char _array[][SIZE_D1])
 {
 	for(int i=0; i<SIZE_D2 ;i++)
 	{
