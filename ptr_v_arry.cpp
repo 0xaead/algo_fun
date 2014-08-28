@@ -32,6 +32,19 @@ void foo_arry3d(char _array[][SIZE_D2][SIZE_D1])
 		}
 	}
 }
+void foo(char* d2_arry_ptr, int d2, int d1) //flatten to char*
+{
+	
+	for(int i=0; i<d2 ;i++)
+	{
+		for(int j=0; j<d1 ;j++)
+		{
+			printf("%c ",(d2_arry_ptr)[j+i*d1] );
+		}
+		printf("\n ");
+	}
+}
+
 void foo2d(char** d2_arry_ptr, int d2, int d1)
 {
 	
@@ -45,7 +58,7 @@ void foo2d(char** d2_arry_ptr, int d2, int d1)
 	}
 }
 
-void foo3d(char** d3_arry_ptr, int d3, int d2, int d1)
+void foo3d(char** d3_arry_ptr, int d3, int d2, int d1)// d3_arry_ptr is flattened to an 1D array
 {
 	for(int k=0; k<SIZE_D3 ;k++)
 	{
@@ -89,6 +102,7 @@ void main()
 		printf("\n ===================================== \n");
 	}
 
+	foo((char*)d1_ptr,SIZE_D2, SIZE_D1);
 	foo2d((char**)&d1_ptr, SIZE_D2, SIZE_D1);
 	foo3d((char**)&d1_ptr, SIZE_D3,SIZE_D2, SIZE_D1);
 	foo_arry2d(d1_ptr);
